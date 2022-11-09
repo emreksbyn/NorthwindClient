@@ -1,0 +1,14 @@
+<!-- ng g component product -->
+<!-- Bu kodu terminalden cagirirsak bize product adinda bi component olusturur. -->
+
+<table class="table">
+    <!--table row-->
+    <tr *ngFor="let product of products">
+        <td>{{product.productId}}</td>
+        <td>{{product.productName}}</td>
+        <td>{{product.categoryId}}</td>
+        <td>{{product.unitPrice}}</td>
+        <td>{{product.quantityPerUnit}}</td>
+    </tr>
+</table>
+
