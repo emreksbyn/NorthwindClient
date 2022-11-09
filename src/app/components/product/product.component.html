@@ -1,8 +1,20 @@
 <!-- ng g component product -->
 <!-- Bu kodu terminalden cagirirsak bize product adinda bi component olusturur. -->
 
-<table class="table">
-    <!--table row-->
+<div *ngIf="(dataLoaded==false)" class="spinner-border text-warning" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>
+<table *ngIf="(dataLoaded==true)" class="table">
+    <thead>
+        <!--table row-->
+        <tr>
+            <th>Id</th>
+            <th>Product Name</th>
+            <th>Category Id</th>
+            <th>Unit Price</th>
+            <th>Quantity Per Unit</th>
+        </tr>
+    </thead>
     <tr *ngFor="let product of products">
         <td>{{product.productId}}</td>
         <td>{{product.productName}}</td>
@@ -11,4 +23,3 @@
         <td>{{product.quantityPerUnit}}</td>
     </tr>
 </table>
-
