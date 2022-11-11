@@ -10,16 +10,20 @@ import { CategoryService } from 'src/app/services/category.service';
 export class CategoryComponent implements OnInit {
 
   categories: Category[] = [];
+  currentCategory: Category;
 
-  constructor(private categoryService:CategoryService) { }
+  constructor(private categoryService: CategoryService) { }
 
   ngOnInit(): void {
     this.getCategories();
   }
 
-  getCategories(){
+  getCategories() {
     this.categoryService.getCategories().subscribe(response => {
       this.categories = response.data
     })
+  }
+  setCurrentCategory(category: Category) {
+    console.log(category.categoryName)
   }
 }
