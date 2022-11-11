@@ -9,12 +9,17 @@ import { Product } from '../models/product';
 })
 export class ProductService {
 
-  apiUrl: string = "https://localhost:44303/api/Products/getall";
-
+  apiUrl: string = "https://localhost:44303/api/Products/";
+  
   constructor(private httpClient: HttpClient) { }
 
   getProducts(): Observable<ListResponseModel<Product>> {
-    return this.httpClient.get<ListResponseModel<Product>>(this.apiUrl);
+    let newPath = this.apiUrl + "getall";
+    return this.httpClient.get<ListResponseModel<Product>>(newPath);
+  }
+  getProductsByCategory(categoryId:number): Observable<ListResponseModel<Product>> {
+    let newPath = this.apiUrl + "getlistbycategoryid?categoryId=" + categoryId;
+    return this.httpClient.get<ListResponseModel<Product>>(newPath);
   }
 }
 // ng g service product  --> terminalden servis olusturma
