@@ -1,9 +1,18 @@
 <!-- ng g component product -->
 <!-- Bu kodu terminalden cagirirsak bize product adinda bi component olusturur. -->
 
+<div class="mb-3">
+    <label for="filterText" class="form-label">Search For Products</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Enter the name of the product">
+</div>
+<div *ngIf="filterText.length >2" class="alert alert-success">
+    You searched {{filterText}}.
+</div>
+
 <div *ngIf="(dataLoaded==false)" class="spinner-border text-warning" role="status">
     <span class="visually-hidden">Loading...</span>
 </div>
+
 <table *ngIf="(dataLoaded==true)" class="table">
     <thead>
         <!--table row-->
@@ -12,14 +21,16 @@
             <th>Product Name</th>
             <th>Category Id</th>
             <th>Unit Price</th>
-            <th>Quantity Per Unit</th>
+            <th>Value Added Tax</th>
+            <th>Units In Stock</th>
         </tr>
     </thead>
     <tr *ngFor="let product of products">
         <td>{{product.productId}}</td>
-        <td>{{product.productName}}</td>
+        <td>{{ product.productName | uppercase }}</td>
         <td>{{product.categoryId}}</td>
-        <td>{{product.unitPrice}}</td>
-        <td>{{product.quantityPerUnit}}</td>
+        <td>{{product.unitPrice | currency}}</td>
+        <td>{{product.unitPrice | vatAdded:18| currency}}</td>
+        <td>{{product.unitsInStock}}</td>
     </tr>
 </table>
