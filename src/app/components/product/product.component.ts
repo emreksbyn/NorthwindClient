@@ -40,4 +40,9 @@ export class ProductComponent implements OnInit {
       this.dataLoaded = true;
     });
   }
+
+  addToCart(product: Product) {
+    console.log(product.productName + " added to cart.");
+  }
+
 }
