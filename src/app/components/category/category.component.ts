@@ -30,19 +30,19 @@ export class CategoryComponent implements OnInit {
 
   setCurrentCategoryClass(category: Category) {
     if (category == this.currentCategory) {
-      return "list-group-item active";
+      return "list-group-item list-group-item-info active";
     }
     else {
-      return "list-group-item";
+      return "list-group-item list-group-item-info";
     }
   }
 
   setAllCategoryClass() {
     if (!this.currentCategory) {
-      return "list-group-item active";
+      return "list-group-item list-group-item-info active";
     }
     else {
-      return "list-group-item";
+      return "list-group-item list-group-item-info";
     }
   }
 }
