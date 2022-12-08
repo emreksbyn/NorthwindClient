@@ -13,14 +13,14 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor() { }
 
   // Gelen request'i klonladik ve ona authorization header'i token ile birlikte ekledik.
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     let token = localStorage.getItem("token");
     let newRequest: HttpRequest<any>;
     newRequest = request.clone({
-      headers: request.headers.set("Authorization", token)
+      headers: request.headers.set("Authorization","Bearer " + token)
     })
     return next.handle(newRequest);
   }
 }
 
-// ErrorHandler
+// ErrorHandler icinde interceptor yazabiliriz.
